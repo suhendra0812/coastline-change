@@ -2,7 +2,7 @@
 
 Coastline change using satellite imagery. In this moment, Sentinel-1 is the only supported satellite imagery which is used to analyze coastline change. Coastline is delineated from binary image which is segmented using image thresholding algorithm (Otsu). Coastline change is performed using transect analysis in time series.
 
-## Requirement
+## Requirements
 
 - Python >= 3.7
 - Planetary Computer Subscription Key
@@ -35,11 +35,12 @@ Coastline change using satellite imagery. In this moment, Sentinel-1 is the only
 
 ## How to use
 
-### Passing parameters in command line argument
+### Passing parameters manually in command line interface
 
 - This is the example:
   ```bash
-  $ python -m coastline_change --collection sentinel-1-rtc \
+  $ python -m coastline_change \
+    --collection sentinel-1-rtc \
     --region-file ./region.json \
     --point-file ./point.json \
     --region-ids 1, 2, 3
