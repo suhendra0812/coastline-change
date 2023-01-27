@@ -1,0 +1,11 @@
+dask[distributed]
+geopandas
+httpx
+planetary-computer
+pystac
+pystac-client
+rioxarray
+scikit-image
+stackstac
+tqdm
+xarray

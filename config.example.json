@@ -1,0 +1,15 @@
+{
+    "collection": "sentinel-1-rtc",
+    "region_file": "./coastline-change/region/coastal_grids.geojson",
+    "point_file": "./coastline-change/region/coastal_points.geojson",
+    "region_ids": [
+        530
+    ],
+    "tide_types": [
+        "mean"
+    ],
+    "start_date": "2015-01-01",
+    "end_date": "2022-12-31",
+    "min_area": 0.98,
+    "parallel": true
+}

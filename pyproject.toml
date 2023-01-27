@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "coastline-change"
+authors = [
+    {name = "Suhendra", email = "suhendra0812@gmail.com"},
+]
+description = "Coastline change using satellite imagery."
+readme = "README.md"
+requires-python = ">=3.7"
+keywords = ["coastline", "coastline-change", "sentinel-1"]
+dynamic = ["version", "dependencies"]
+
+[tool.setuptools.packages.find]
+exclude = ["output", "region"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[project.scripts]
+s1-coastline-change = "coastline_change.__main__:main"
