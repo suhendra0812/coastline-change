@@ -85,13 +85,16 @@ class BIGTide:
             r = client.get(self.url, params=params)
 
             results = r.json()["results"]
-            predictions = results["predictions"]
-            ids = [i for i in predictions.keys()]
+            predictions = {
+                key: value
+                for key, value in results["predictions"].items()
+                if len(value) == 5
+            }
             values = [v for v in predictions.values()]
             error_list = ["Site", "is", "out", "of", "model", "grid", "OR", "land"]
             if set(error_list).issubset(values[0]):
                 raise ValueError(" ".join(error_list))
-            df = pd.DataFrame(data=values, index=pd.Index(ids))
+            df = pd.DataFrame(data=values)
             df.columns = ["lat", "lon", "date", "time", "level"]
             df["lat"] = df["lat"].astype(float)
             df["lon"] = df["lon"].astype(float)
@@ -99,6 +102,7 @@ class BIGTide:
             df["datetime"] = pd.to_datetime(
                 df["date"].str.cat(df["time"], sep="T"), utc=True
             )
+            df = df.sort_values(by="datetime")
 
         return df
 
