@@ -74,7 +74,7 @@ def binary_extraction(
     filter_size: int = 5,
     binary_threshold: Optional[Union[Iterable[float], float]] = None,
     return_db_data: bool = False,
-) -> Union[xr.DataArray, Iterable[xr.DataArray]]:
+) -> Iterable[xr.DataArray]:
     if not isinstance(binary_threshold, Iterable):
         binary_threshold = [binary_threshold for _ in range(len(scene_data.time))]
 
@@ -96,14 +96,17 @@ def binary_extraction(
         )
     )
 
+    results = []
+
     if dem_data is not None:
         logger.info(f"Mask pixel with elevation: {dem_threshold} m")
         binary_data = dem_masking(binary_data, dem_data, dem_threshold)
+        results.append(binary_data)
 
     if return_db_data:
-        return binary_data, db_data
+        results.append(db_data)
 
-    return binary_data
+    return results
 
 
 def subpixel_contours(
