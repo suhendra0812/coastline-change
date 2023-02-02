@@ -9,7 +9,7 @@ authors = [
 ]
 description = "Coastline change using satellite imagery."
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.7,<=3.10"
 keywords = ["coastline", "coastline-change", "sentinel-1"]
 dynamic = ["version", "dependencies"]
 

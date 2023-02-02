@@ -4,7 +4,7 @@ Coastline change using satellite imagery. In this moment, Sentinel-1 is the only
 
 ## Requirements
 
-- Python >= 3.7
+- Python >= 3.7, <= 3.10 (scikit-image is not yet supported in Python 3.11)
 - Planetary Computer Subscription Key
 
 ## How to get the subscription key:
