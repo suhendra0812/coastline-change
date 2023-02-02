@@ -10,11 +10,12 @@ import numpy as np
 import pandas as pd
 import rioxarray as xr
 import xarray as xr
+from dask.distributed import Client
+from pyproj import CRS
+
 from coastline_change.analysis import create_transects, transect_analysis
 from coastline_change.datasets import DEMSTACDataset, S1STACDataset
 from coastline_change.detection import binary_extraction, coastline_extraction
-from dask.distributed import Client
-from pyproj import CRS
 
 logger = logging.getLogger(__name__)
 
@@ -96,7 +97,7 @@ def s1_coastline_change(
         )
 
         s1_data = s1_stac.get_data()
-        logger.info(f"S1 Found: {len(s1_data)} datasets")
+        logger.info(f"Found: {len(s1_data)} datasets")
 
         logger.info("Load data from dask client...")
         vh_data = s1_data.load()
